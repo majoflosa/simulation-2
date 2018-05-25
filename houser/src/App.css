@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.App {
+  text-align: center;
+  background-color: #afd4c0;
+  min-height: 97vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn {
+  border: none;
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = =
+  HEADER
+= = = = = = = = = = = = = = = = = = = = = = = = */
+.header-wrap {
+  background-color: #519872;
+  color: #fff;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.header-wrap .inner-header {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header-wrap .inner-header img {
+  margin-right: 12px;
+}
+
+
+
+
+/* = = = = = = = = = = = = = = = = = = = = = = = =
+  DASHBOARD
+= = = = = = = = = = = = = = = = = = = = = = = = */
+.main-wrap {
+  background-color: #e5f4ec;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 93vh;
+  position: relative;
+}
+
+.dashboard-hdr {
+  border-bottom: 1px solid #000;
+  text-align: left;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-hdr .dashboard-title {
+  font-size: 32px;
+  color: #3b5249;
+}
+
+.dashboard-hdr .btn,
+.green-btn {
+  font-size: 18px;
+  background-color: #8aea92;
+  color: #000;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.dashboard-body {
+  text-align: left;
+}
+
+.dashboard-body h3 {
+  margin-left: 15px;
+}
+
+
+
+
+
+/* = = = = = = = = = = = = = = = = = = = = = = = =
+  WIZARD
+= = = = = = = = = = = = = = = = = = = = = = = = */
+.wizard-hdr {
+  /* border-bottom: 1px solid #000; */
+  text-align: left;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wizard-hdr .wizard-title {
+  font-size: 27px;
+  color: #000;
+  font-weight: bold;
+}
+
+.wizard-hdr .btn {
+  font-size: 12px;
+  background-color: #fec2c2;
+  color: #000;
+  font-weight: bold;
+  padding: 8px 8px;
+}
+
+.wizard-body {
+  /* position: relative; */
+}
+
+.form-wrap {
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.field-group {
+
+}
+
+.field-group.inline-group {
+  display: inline-block;
+  margin: 0 20px 0 0;
+}
+
+.field-group label {
+  display: block;
+  font-weight: bold;
+  padding-left: 12px;
+}
+
+.field-group input {
+  display: block;
+  border: 1px solid #519872;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 4px 2px;
+}
+
+#address {
+  width: 100%;
+}
+
+#complete-btn {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+}
