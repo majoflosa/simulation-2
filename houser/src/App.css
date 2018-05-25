@@ -169,7 +169,7 @@ button {
   padding: 4px 2px;
 }
 
-#address {
+#address, .long-input {
   width: 100%;
 }
 
