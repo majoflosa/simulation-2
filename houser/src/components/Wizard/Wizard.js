@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Wizard extends Component {
     constructor(){
@@ -18,6 +19,7 @@ class Wizard extends Component {
         this.updateCityValue = this.updateCityValue.bind( this );
         this.updateStateValue = this.updateStateValue.bind( this );
         this.updateZipValue = this.updateZipValue.bind( this );
+        this.createHouse = this.createHouse.bind( this );
     }
 
     updateNameValue( e ) {
@@ -40,8 +42,16 @@ class Wizard extends Component {
         this.setState({ zip: e.target.value });
     }
 
+    createHouse() {
+        let { name, address, city, state, zip } = this.state;
+        let reqBody = { name, address, city, state, zip };
+
+        axios.post( 'http://localhost:3001/api/house', reqBody )
+            .then( response => console.log( 'post successful on frontend' ) )
+            .catch( err => console.log( 'post failed on frontend: ', err ) );
+    }
+
     render() {
-        // console.log( `name: ${this.state.name}, address: ${this.state.address}, city: ${this.state.city}, state: ${this.state.state}, zip: ${this.state.zip}` );
         return (
             <main className="wizard-wrap main-wrap">
                 
@@ -74,7 +84,7 @@ class Wizard extends Component {
                         </p>
                     </div>
 
-                    <Link to="/"><button id="complete-btn" className="btn green-btn">Complete</button></Link>
+                    <button onClick={ this.createHouse } id="complete-btn" className="btn green-btn">Complete</button>
                 </div>
 
             </main>
