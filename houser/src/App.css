@@ -184,3 +184,9 @@ button {
   bottom: 80px;
   right: 80px;
 }
+
+.prev, .next {
+  background-color: #3b5249;
+  color: #fff;
+  font-weight: normal
+}

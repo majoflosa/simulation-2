@@ -17,6 +17,7 @@ const UPDATE_ZIP = 'UPDATE_ZIP';
 const UPDATE_IMAGE = 'UPDATE_IMAGE';
 const UPDATE_MORTGAGE = 'UPDATE_MORTGAGE';
 const UPDATE_RENT = 'UPDATE_RENT';
+const RESET = 'RESET';
 
 export function updateName( name ) {
     return {
@@ -54,7 +55,6 @@ export function updateZip( zip ) {
 };
 
 export function updateImage( image ) {
-    console.log( 'reducer: ', image );
     return {
         type: UPDATE_IMAGE,
         payload: image
@@ -72,6 +72,14 @@ export function updateRent( rent ) {
     return {
         type: UPDATE_RENT,
         payload: rent
+    }
+};
+
+export function reset( ) {
+    console.log( 'reset was invoked' ); 
+    return {
+        type: RESET,
+        payload: initialState
     }
 };
 
@@ -117,6 +125,8 @@ export default function reducer( state = initialState, action ) {
                 ...state,
                 rent: action.payload
             };
+        case RESET:
+            return initialState;
         default:
             return state;
     }

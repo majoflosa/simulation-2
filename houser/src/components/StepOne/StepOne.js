@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import {connect} from 'react-redux';
-import reducer from '../../ducks/reducer';
+// import reducer from '../../ducks/reducer';
 import { updateName, updateAddress, updateCity, updateState, updateZip } from '../../ducks/reducer';
 
 class StepOne extends Component {
-    constructor(){
-        super();
+    // constructor(){
+        // super();
 
         // this.state = {
         //     name: '',
@@ -23,7 +23,7 @@ class StepOne extends Component {
         // this.updateStateValue = this.updateStateValue.bind( this );
         // this.updateZipValue = this.updateZipValue.bind( this );
         // this.createHouse = this.createHouse.bind( this );
-    }
+    // }
 
     // updateNameValue( e ) {
     //     this.setState({ name: e.target.value });
@@ -82,7 +82,7 @@ class StepOne extends Component {
                 </div>
 
                 <Link to="/wizard/step2">
-                    <button id="complete-btn" className="btn green-btn">Next Step</button>
+                    <button className="btn green-btn next">Next Step</button>
                 </Link>
             </div>
         );

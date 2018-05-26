@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {updateMortgage, updateRent} from '../../ducks/reducer';
+import {updateMortgage, updateRent, reset} from '../../ducks/reducer';
 
 class StepThree extends Component {
     constructor(){
@@ -33,11 +33,14 @@ class StepThree extends Component {
     // }
 
     createHouse() {
-        let { name, address, city, state, zip, image, mortgage, rent } = this.props;
+        let { name, address, city, state, zip, image, mortgage, rent, reset } = this.props;
         let reqBody = { name, address, city, state, zip, image, mortgage, rent };
 
         axios.post( 'http://localhost:3001/api/house', reqBody )
-            .then( response => console.log( 'post successful on frontend' ) )
+            .then( response => {
+                console.log( 'post successful on frontend: ', response );
+                reset();
+            } )
             .catch( err => console.log( 'post failed on frontend: ', err ) );
     }
 
@@ -58,14 +61,17 @@ class StepThree extends Component {
                     <p className="field-group">
                         <label htmlFor="address">Desired Monthly Rent</label>
                         <input 
-                        onChange={ (e) => this.props.updateRent(e.target.value)} 
-                        type="text" 
-                        value={this.props.rent} 
-                        className="long-input"    
-                    />
+                            onChange={ (e) => this.props.updateRent(e.target.value)} 
+                            type="text" 
+                            value={this.props.rent} 
+                            className="long-input"    
+                        />
                     </p>
                 </div>
 
+                <Link to="/wizard/step2">
+                    <button className="btn green-btn prev">Previous Step</button>
+                </Link>
                 <button onClick={ this.createHouse } id="complete-btn" className="btn green-btn">Complete</button>
             </div>
         );
@@ -82,7 +88,7 @@ const mapStateToProps = state => {
         image: state.image,
         mortgage: state.mortgage,
         rent: state.rent
-    }
+    };
 }
 
-export default connect( mapStateToProps, {updateMortgage, updateRent })(StepThree);
+export default connect( mapStateToProps, {updateMortgage, updateRent, reset})(StepThree);

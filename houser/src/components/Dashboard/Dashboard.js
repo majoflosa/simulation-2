@@ -19,7 +19,7 @@ class Dashboard extends Component {
     getHouses() {
         axios.get( 'http://localhost:3001/api/houses' )
             .then( response => {
-                console.log( 'axios get response: ', response );
+                // console.log( 'axios get response: ', response );
                 this.setState({ houses: response.data })
             })
             .catch( err => console.log( 'getHouses failed on frontend: ', err ) );
@@ -38,7 +38,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.getHouses();
-        console.log( 'dashboard component mounted' );
+        // console.log( 'dashboard component mounted' );
     }
 
     render() {

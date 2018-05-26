@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {reset} from '../../ducks/reducer';
 // import axios from 'axios';
 
 import StepOne from '../StepOne/StepOne';
@@ -7,8 +9,8 @@ import StepTwo from '../StepTwo/StepTwo';
 import StepThree from '../StepThree/StepThree';
 
 class Wizard extends Component {
-    constructor(){
-        super();
+    // constructor(){
+        // super();
 
         // this.state = {
         //     name: '',
@@ -24,7 +26,7 @@ class Wizard extends Component {
         // this.updateStateValue = this.updateStateValue.bind( this );
         // this.updateZipValue = this.updateZipValue.bind( this );
         // this.createHouse = this.createHouse.bind( this );
-    }
+    // }
 
     // updateNameValue( e ) {
     //     this.setState({ name: e.target.value });
@@ -65,7 +67,7 @@ class Wizard extends Component {
                     {/* TO DO:
                         * Cancel button should reset state
                     */}
-                    <Link to="/"><button className="btn">Cancel</button></Link>
+                    <Link to="/"><button onClick={this.props.reset} className="btn">Cancel</button></Link>
                 </div>
 
                 <Switch>
@@ -79,4 +81,6 @@ class Wizard extends Component {
     }
 }
 
-export default Wizard;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {reset})(Wizard);
