@@ -1,46 +1,66 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import reducer from '../../ducks/reducer'; 
+import { updateImage } from '../../ducks/reducer'; 
 
-class Wizard extends Component {
+class StepTwo extends Component {
     constructor(){
         super();
 
-        this.state = {
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: 0,
-            image: ''
-        };
+        // this.state = {
+        //     name: '',
+        //     address: '',
+        //     city: '',
+        //     state: '',
+        //     zip: 0,
+        //     image: ''
+        // };
 
-        this.updateImageValue = this.updateImageValue.bind( this );
+        // this.updateImageValue = this.updateImageValue.bind( this );
     }
 
-    updateImageValue( e ) {
-        this.setState({ image: e.target.value });
-    }
+    // updateImageValue( e ) {
+    //     this.setState({ image: e.target.value });
+    // }
 
     render() {
+        console.log( this.props );
         return (
             <div className="wizard-body">
                 <div className="form-wrap">
                     <p className="field-group">
-                        <label htmlFor="prop-name">Image URL</label>
+                        <label htmlFor="image">Image URL</label>
                         <input 
-                            onChange={ (e) => this.updateImageValue(e)}
-                            type="text" id="prop-name"
-                            value={this.state.image} 
+                            onChange={ (e) => this.props.updateImage(e.target.value)}
+                            type="text" id="image"
+                            value={this.props.image} 
                             className="long-input"    
                         />
                     </p>
                 </div>
 
-                <button onClick={ this.createHouse } id="complete-btn" className="btn green-btn">Complete</button>
+                <Link to="/wizard/step1">
+                    <button className="btn green-btn prev">Previous Step</button>
+                </Link>
+                <Link to="/wizard/step3">
+                    <button className="btn green-btn next">Next Step</button>
+                </Link>
             </div>
         );
     }
 }
 
-export default Wizard;
+const mapStateToProps = state => {
+    return {
+        name: state.name, 
+        address: state.address,
+        city: state.city,
+        state: state.state, 
+        zip: state.zip,
+        image: state.image
+    }
+}
+
+export default connect(mapStateToProps, {updateImage})(StepTwo);

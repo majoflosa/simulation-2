@@ -173,7 +173,13 @@ button {
   width: 100%;
 }
 
-#complete-btn {
+.prev {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+}
+
+#complete-btn, .next {
   position: absolute;
   bottom: 80px;
   right: 80px;

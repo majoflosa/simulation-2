@@ -1,38 +1,40 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {updateMortgage, updateRent} from '../../ducks/reducer';
 
-class Wizard extends Component {
+class StepThree extends Component {
     constructor(){
         super();
 
-        this.state = {
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: 0,
-            image: '',
-            mortgage: '',
-            rent: ''
-        };
+        // this.state = {
+        //     name: '',
+        //     address: '',
+        //     city: '',
+        //     state: '',
+        //     zip: 0,
+        //     image: '',
+        //     mortgage: '',
+        //     rent: ''
+        // };
 
-        this.updateMortgageValue = this.updateMortgageValue.bind( this );
-        this.updateRentValue = this.updateRentValue.bind( this );
+        // this.updateMortgageValue = this.updateMortgageValue.bind( this );
+        // this.updateRentValue = this.updateRentValue.bind( this );
         this.createHouse = this.createHouse.bind( this );
     }
 
-    updateMortgageValue( e ) {
-        this.setState({ mortgage: e.target.value });
-    }
+    // updateMortgageValue( e ) {
+    //     this.setState({ mortgage: e.target.value });
+    // }
 
-    updateRentValue( e ) {
-        this.setState({ rent: e.target.value });
-    }
+    // updateRentValue( e ) {
+    //     this.setState({ rent: e.target.value });
+    // }
 
     createHouse() {
-        let { name, address, city, state, zip } = this.state;
-        let reqBody = { name, address, city, state, zip };
+        let { name, address, city, state, zip, image, mortgage, rent } = this.props;
+        let reqBody = { name, address, city, state, zip, image, mortgage, rent };
 
         axios.post( 'http://localhost:3001/api/house', reqBody )
             .then( response => console.log( 'post successful on frontend' ) )
@@ -40,24 +42,25 @@ class Wizard extends Component {
     }
 
     render() {
+        console.log( this.props );
         return (
             <div className="wizard-body">
                 <div className="form-wrap">
                     <p className="field-group">
                         <label htmlFor="prop-name">Monthly Mortgage Amount</label>
                         <input 
-                            onChange={ (e) => this.updateMortgageValue(e)} 
+                            onChange={ (e) => this.props.updateMortgage(e.target.value)} 
                             type="text" id="prop-name" 
-                            value={this.state.mortgage} 
+                            value={this.props.mortgage} 
                             className="long-input"
                         />
                     </p>
                     <p className="field-group">
                         <label htmlFor="address">Desired Monthly Rent</label>
                         <input 
-                        onChange={ (e) => this.updateRentValue(e)} 
+                        onChange={ (e) => this.props.updateRent(e.target.value)} 
                         type="text" 
-                        value={this.state.rent} 
+                        value={this.props.rent} 
                         className="long-input"    
                     />
                     </p>
@@ -69,4 +72,17 @@ class Wizard extends Component {
     }
 }
 
-export default Wizard;
+const mapStateToProps = state => {
+    return {
+        name: state.name, 
+        address: state.address,
+        city: state.city,
+        state: state.state, 
+        zip: state.zip,
+        image: state.image,
+        mortgage: state.mortgage,
+        rent: state.rent
+    }
+}
+
+export default connect( mapStateToProps, {updateMortgage, updateRent })(StepThree);

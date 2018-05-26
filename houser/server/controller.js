@@ -14,9 +14,9 @@ const getHouses = (req, res, next) => {
 }
 
 const createHouse = (req, res, next) => {
-    const { name, address, city, state, zip } = req.body;
+    const { name, address, city, state, zip, image, mortgage, rent } = req.body;
     req.app.get( 'db' )
-        .createHouseQuery( [dbid, name, address, city, state, zip] )
+        .createHouseQuery( [dbid, name, address, city, state, zip, image, mortgage, rent] )
         .then( response => {
             dbid++;
             console.log( 'createHouse successful: ', response );

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
 import StepOne from '../StepOne/StepOne';
 import StepTwo from '../StepTwo/StepTwo';
@@ -61,6 +61,10 @@ class Wizard extends Component {
                 
                 <div className="wizard-hdr">
                     <span className="wizard-title">Add New Listing</span>
+
+                    {/* TO DO:
+                        * Cancel button should reset state
+                    */}
                     <Link to="/"><button className="btn">Cancel</button></Link>
                 </div>
 
