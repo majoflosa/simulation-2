@@ -1,4 +1,4 @@
-let dbid = 14;
+// let dbid = 14;
 
 const getHouses = (req, res, next) => {
     req.app.get( 'db' )
@@ -16,13 +16,13 @@ const getHouses = (req, res, next) => {
 const createHouse = (req, res, next) => {
     const { name, address, city, state, zip, image, mortgage, rent } = req.body;
     req.app.get( 'db' )
-        .createHouseQuery( [dbid, name, address, city, state, zip, image, mortgage, rent] )
+        .createHouseQuery( [name, address, city, state, zip, image, mortgage, rent] )
         .then( response => {
-            dbid++;
+            // dbid++;
             console.log( 'createHouse successful');
             // let redirect = res.redirect;
-            // return res.status(200).json( redirect );
-            // res.redirect('http://localhost:3000/');
+            // res.status(200).json( response );
+            res.redirect('http://127.0.0.1:3000/');
         })
         .catch( err => {
             console.log( err );

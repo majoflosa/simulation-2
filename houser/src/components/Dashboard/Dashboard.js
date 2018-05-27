@@ -17,7 +17,7 @@ class Dashboard extends Component {
     }
 
     getHouses() {
-        axios.get( 'http://localhost:3001/api/houses' )
+        axios.get( '/api/houses', { proxy: {host: '127.0.0.1', port: 3001} } )
             .then( response => {
                 // console.log( 'axios get response: ', response );
                 this.setState({ houses: response.data })

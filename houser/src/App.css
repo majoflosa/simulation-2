@@ -95,9 +95,36 @@ button {
 = = = = = = = = = = = = = = = = = = = = = = = = */
 .house-wrap {
   background-color: #dedede;
-  padding: 1px 10px;
+  padding: 10px;
   margin: 15px auto;
   position: relative;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+
+.house-wrap .house-img {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 300px;
+  height: auto;
+  margin: 0 15px 0 0;
+  /* transform: scale(0.5) translate(-50%, -50%); */
+}
+
+.house-wrap .house-info {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 60%;
+  /* float: right; */
+}
+
+.house-wrap .house-info p {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  box-sizing: border-box;
+  margin: 8px 0;
 }
 
 .house-wrap .delete-house {

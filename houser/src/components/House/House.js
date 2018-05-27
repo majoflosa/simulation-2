@@ -5,21 +5,24 @@ import deleteButton from '../../delete_button.png';
 function House(props) {
     return (
         <div className="house-wrap">
-            <p>Name: {props.house.name}</p>
-            <p>Address: {props.house.address}</p>
-            <p>City: {props.house.city}</p>
-            <p>State: {props.house.state}</p>
-            <p>Zip: {props.house.zip}</p>
-            <p>Image: {props.house.image}</p>
-            <p>Mortgage: {props.house.mortgage}</p>
-            <p>Rent: {props.house.rent}</p>
+            <img className="house-img" src={props.house.image} alt={props.house.name} />
+            <div className="house-info">
+                <p>Name: {props.house.name}</p>
+                <p>Address: {props.house.address}</p>
+                <p>City: {props.house.city}</p>
+                <p>State: {props.house.state}</p>
+                <p>Zip: {props.house.zip}</p>
+                {/* <p>Image: {props.house.image}</p> */}
+                <p>Mortgage: {props.house.mortgage}</p>
+                <p>Rent: {props.house.rent}</p>
+            </div>
 
             {/* <Link to={ '/' + props.house.id }> */}
-                <button 
-                    onClick={ () => props.deleteHouse(props.house.id)} 
-                    className="delete-house">
-                        <img src={deleteButton} alt="Delete house" />
-                </button>
+            <button 
+                onClick={ () => props.deleteHouse(props.house.id)} 
+                className="delete-house">
+                    <img src={deleteButton} alt="Delete house" />
+            </button>
             {/* </Link> */}
         </div>
     );

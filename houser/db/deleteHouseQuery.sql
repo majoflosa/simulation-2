@@ -1,1 +1,1 @@
-DELETE FROM houser WHERE id = $1;
+DELETE FROM houses WHERE id = $1;

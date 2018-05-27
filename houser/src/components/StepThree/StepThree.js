@@ -36,12 +36,13 @@ class StepThree extends Component {
         let { name, address, city, state, zip, image, mortgage, rent, reset } = this.props;
         let reqBody = { name, address, city, state, zip, image, mortgage, rent };
 
-        axios.post( 'http://localhost:3001/api/house', reqBody )
+        axios.post( '/api/house', reqBody, { proxy: {host: '127.0.0.1', port: 3001} } )
             .then( response => {
                 console.log( 'post successful on frontend: ', response );
-                reset();
             } )
             .catch( err => console.log( 'post failed on frontend: ', err ) );
+        
+        reset();
     }
 
     render() {
